@@ -9,6 +9,12 @@
 8. bigint => BigInt
 
 Объекты:
-  - составной (комбинированный)
+  - составной (комбинированный) тип данных
+  - ссылочный тип данных
 9. object => object, array, function
 */
+
+const user = {name: 'Bob'};
+const user2 = user;
+user2.name = "Alex";
+console.log(user.name);
