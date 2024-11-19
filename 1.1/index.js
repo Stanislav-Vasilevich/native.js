@@ -59,10 +59,11 @@ const newUser = {
 
 // CRUD
 const copyUsers = [
-  users[0],
-  users[2],
-  users[3],
-  users[4],
+  // users[0],
+  // users[2],
+  // users[3],
+  // users[4],
+  ...users,
   newUser
 ]
 
