@@ -122,3 +122,6 @@ console.log('superUserCopy2: ', superUserCopy2);
 
 const superUserCopy3 = {...superUser, email: 'stanislavasilevich@yandex.ru'}
 console.log('superUserCopy3: ', superUserCopy3);
+
+const copy = structuredClone(superUser);
+console.log('copy: ', copy);
