@@ -17,10 +17,14 @@ const obj = {
 console.log(obj.getName());
 
 const a = document.querySelector('.a');
+const b = document.querySelector('.b');
+const c = document.querySelector('.c');
 
 // вешаем несколько обработчиков события
-function handler(params) {
-  console.log(params);
+function handler(e) {
+  console.log(e);
+  e.stopPropagation();
+  alert('удалил обработчик');
 }
 
 function handler2(params) {
@@ -31,17 +35,26 @@ function double(params) {
   handler(params);
   handler2(params);
 }
-a.onclick = double;
+
+function hello() {
+  console.log('hello');
+}
 
 // но лучше такой метод!
-a.addEventListener('click', (e) => {
-  console.log('e.currentTarget: ', e.currentTarget);
-  console.log('e.target: ', e.target);
-});
+// a.addEventListener('click', (e) => {
+//   console.log('e.target: ', e.target);
+// });
 
 // сколько угодно обработчиков события
 // функция getEventListeners(a) показывает сколько обработчиков события весит на нужном нам элементе
-a.addEventListener('click', (e) => {
-  console.log('e.currentTarget: ', e.currentTarget);
-  console.log('e.target: ', e.target);
+// также всплытие можем поменять на погружение и вызвать обработчик один раз
+a.addEventListener('click', double); // для этого третьим параметром передаем {capture: true, once: true}
+b.addEventListener('click', hello);
+c.addEventListener('click', handler);
+b.removeEventListener('click', hello);
+
+// удаляем для ссылки функции по умолчанию
+const link = document.querySelector('a');
+link.addEventListener('click', (e) => {
+  e.preventDefault();
 });
